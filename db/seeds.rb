@@ -13,7 +13,7 @@ if Rails.env.development?
   minuman = Category.find_or_create_by!(name: "Minuman")
   camilan = Category.find_or_create_by!(name: "Camilan")
 
-  Product.find_or_create_by!(slug: "es-teh-manis") do |product|
+  es_teh_manis = Product.find_or_create_by!(slug: "es-teh-manis") do |product|
     product.name = "Es Teh Manis"
     product.category = minuman
     product.description = "Teh manis segar dengan es batu."
@@ -21,12 +21,30 @@ if Rails.env.development?
     product.stock = 50
   end
 
-  Product.find_or_create_by!(slug: "keripik-singkong") do |product|
+  keripik_singkong = Product.find_or_create_by!(slug: "keripik-singkong") do |product|
     product.name = "Keripik Singkong"
     product.category = camilan
     product.description = "Keripik singkong renyah rasa original."
     product.price_cents = 12_000
     product.stock = 30
+  end
+
+  seed_images = Rails.root.join("db/seed_images")
+
+  unless es_teh_manis.photo.attached?
+    es_teh_manis.photo.attach(
+      io: File.open(seed_images.join("es-teh-manis.png")),
+      filename: "es-teh-manis.png",
+      content_type: "image/png"
+    )
+  end
+
+  unless keripik_singkong.photo.attached?
+    keripik_singkong.photo.attach(
+      io: File.open(seed_images.join("keripik-singkong.png")),
+      filename: "keripik-singkong.png",
+      content_type: "image/png"
+    )
   end
 end
 

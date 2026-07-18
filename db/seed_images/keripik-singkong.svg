@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fbeee0"/>
+      <stop offset="100%" stop-color="#f6ddc4"/>
+    </linearGradient>
+    <radialGradient id="bowl" cx="50%" cy="35%" r="70%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#e7d9c8"/>
+    </radialGradient>
+    <linearGradient id="chip" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f6d165"/>
+      <stop offset="100%" stop-color="#dda12f"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="400" fill="url(#bg2)"/>
+
+  <ellipse cx="200" cy="330" rx="120" ry="18" fill="#c1440e" opacity="0.12"/>
+
+  <!-- bowl -->
+  <path d="M90 220 Q90 300 200 305 Q310 300 310 220 Z" fill="url(#bowl)"/>
+  <ellipse cx="200" cy="220" rx="110" ry="26" fill="#f3e5d5" stroke="#e7d9c8" stroke-width="3"/>
+
+  <!-- chips: thin wavy irregular discs, like cassava crisps -->
+  <g stroke="#c98a26" stroke-width="2.5" stroke-linejoin="round">
+    <path d="M138 208 C132 198 140 186 154 184 C168 182 182 188 186 200
+             C190 210 186 220 180 224 C188 228 190 238 182 244
+             C172 250 156 248 148 240 C138 236 132 220 138 208 Z" fill="url(#chip)"/>
+
+    <path d="M195 186 C190 174 202 162 218 162 C234 162 246 172 248 184
+             C250 194 244 202 236 206 C244 210 246 220 238 226
+             C226 232 210 228 202 220 C192 214 188 198 195 186 Z" fill="url(#chip)"/>
+
+    <path d="M235 202 C232 190 246 180 262 182 C276 184 286 194 286 206
+             C286 216 280 222 272 224 C280 230 280 240 270 244
+             C258 248 244 242 238 232 C230 224 230 212 235 202 Z" fill="url(#chip)"/>
+
+    <path d="M168 216 C164 208 172 198 184 198 C196 198 206 206 206 216
+             C206 224 200 230 194 232 C200 236 200 244 192 248
+             C182 252 170 246 166 238 C160 230 162 222 168 216 Z" fill="url(#chip)"/>
+  </g>
+
+  <!-- fine speckles for texture -->
+  <g fill="#a8651a" opacity="0.5">
+    <circle cx="160" cy="206" r="2.2"/>
+    <circle cx="172" cy="216" r="1.8"/>
+    <circle cx="215" cy="188" r="2.2"/>
+    <circle cx="228" cy="198" r="1.8"/>
+    <circle cx="258" cy="208" r="2.2"/>
+    <circle cx="268" cy="220" r="1.8"/>
+    <circle cx="184" cy="222" r="1.8"/>
+  </g>
+</svg>

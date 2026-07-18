@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fbeee0"/>
+      <stop offset="100%" stop-color="#f6ddc4"/>
+    </linearGradient>
+    <linearGradient id="tea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#a9662f"/>
+      <stop offset="100%" stop-color="#7a4a1f"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.55"/>
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.4"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="400" fill="url(#bg)"/>
+
+  <ellipse cx="200" cy="345" rx="95" ry="16" fill="#c1440e" opacity="0.12"/>
+
+  <!-- glass -->
+  <path d="M130 130 L145 330 Q200 350 255 330 L270 130 Z" fill="url(#tea)"/>
+  <path d="M130 130 L145 330 Q200 350 255 330 L270 130 Z" fill="url(#glass)"/>
+  <path d="M130 130 L270 130 L262 165 L138 165 Z" fill="#c1440e" opacity="0.18"/>
+
+  <!-- ice cubes -->
+  <g fill="#ffffff" opacity="0.85" stroke="#e7d9c8" stroke-width="2">
+    <rect x="160" y="175" width="34" height="34" rx="6" transform="rotate(-8 177 192)"/>
+    <rect x="205" y="190" width="30" height="30" rx="6" transform="rotate(10 220 205)"/>
+    <rect x="175" y="215" width="28" height="28" rx="6" transform="rotate(-4 189 229)"/>
+  </g>
+
+  <!-- straw -->
+  <rect x="228" y="60" width="16" height="230" rx="8" fill="#e8a33f" transform="rotate(8 236 175)"/>
+  <rect x="228" y="60" width="16" height="230" rx="8" fill="#ffffff" opacity="0.25" transform="rotate(8 236 175)"/>
+
+  <!-- lemon slice -->
+  <g transform="translate(280 200) rotate(18)">
+    <circle r="26" fill="#f4d35e"/>
+    <circle r="20" fill="#fbe8a6"/>
+    <g stroke="#f4d35e" stroke-width="3">
+      <line x1="0" y1="-20" x2="0" y2="20"/>
+      <line x1="-17" y1="-10" x2="17" y2="10"/>
+      <line x1="-17" y1="10" x2="17" y2="-10"/>
+    </g>
+  </g>
+</svg>
