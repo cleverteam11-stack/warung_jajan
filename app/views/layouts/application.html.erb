@@ -18,6 +18,10 @@
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
   </head>
@@ -25,8 +29,12 @@
   <body>
     <header class="site-header">
       <div class="container site-header__bar">
-        <%= link_to "Warung Jajan", root_path, class: "site-header__brand" %>
-        <%= link_to "Keranjang (#{current_cart.items.sum(&:quantity)})", cart_path, class: "site-header__cart" %>
+        <%= link_to root_path, class: "site-header__brand" do %>
+          <span class="site-header__brand-mark">🍡</span> Warung Jajan
+        <% end %>
+        <%= link_to cart_path, class: "site-header__cart" do %>
+          🛒 Keranjang <span class="site-header__cart-count"><%= current_cart.items.sum(&:quantity) %></span>
+        <% end %>
       </div>
     </header>
 
@@ -40,5 +48,11 @@
 
       <%= yield %>
     </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        &copy; <%= Date.current.year %> Warung Jajan &mdash; Jajanan enak, dianter sampai depan pintu.
+      </div>
+    </footer>
   </body>
 </html>

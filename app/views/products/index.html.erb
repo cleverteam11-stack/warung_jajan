@@ -1,6 +1,12 @@
 <% content_for :title, "Warung Jajan" %>
 
-<h1>Jajanan Kami</h1>
+<div class="hero">
+  <p class="hero__eyebrow">Warung Jajan</p>
+  <h1 class="hero__title">Jajanan Favoritmu, Tinggal Klik</h1>
+  <p class="hero__subtitle">Camilan &amp; minuman segar, dipesan online, dianter cepat ke rumahmu.</p>
+</div>
+
+<h2 class="section-title">Semua Jajanan</h2>
 
 <div class="category-filter">
   <%= link_to "Semua", products_path, class: params[:category_id].blank? ? "active" : nil %>
@@ -19,7 +25,7 @@
             <% if product.photo.attached? %>
               <%= image_tag product.photo %>
             <% else %>
-              <span class="product-card__photo--placeholder">Tidak ada foto</span>
+              <span class="product-card__photo--placeholder">🍡 Tidak ada foto</span>
             <% end %>
           </div>
         <% end %>

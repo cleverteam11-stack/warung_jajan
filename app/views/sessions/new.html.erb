@@ -1,11 +1,24 @@
-<%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
-<%= tag.div(flash[:notice], style: "color:green") if flash[:notice] %>
+<% content_for :title, "Masuk - Warung Jajan" %>
+
+<h1 class="auth-card__title">Masuk Admin</h1>
+<p class="auth-card__subtitle">Kelola produk dan pesanan warung kamu.</p>
 
 <%= form_with url: session_path do |form| %>
-  <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address] %><br>
-  <%= form.password_field :password, required: true, autocomplete: "current-password", placeholder: "Enter your password", maxlength: 72 %><br>
-  <%= form.submit "Sign in" %>
-<% end %>
-<br>
+  <div class="field">
+    <%= form.label :email_address, "Email" %>
+    <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username",
+          placeholder: "admin@warungjajan.test", value: params[:email_address] %>
+  </div>
 
-<%= link_to "Forgot password?", new_password_path %>
+  <div class="field">
+    <%= form.label :password, "Kata Sandi" %>
+    <%= form.password_field :password, required: true, autocomplete: "current-password",
+          placeholder: "Masukkan kata sandi", maxlength: 72 %>
+  </div>
+
+  <%= form.submit "Masuk", class: "btn btn-block" %>
+<% end %>
+
+<p class="auth-card__footer">
+  <%= link_to "Lupa kata sandi?", new_password_path %>
+</p>

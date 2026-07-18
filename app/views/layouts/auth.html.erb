@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for(:title) || "Masuk - Warung Jajan" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <link rel="icon" href="/icon.png" type="image/png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+  </head>
+
+  <body class="auth-body">
+    <main class="auth-shell">
+      <div class="auth-card">
+        <%= link_to root_path, class: "auth-brand" do %>
+          <span class="auth-brand__mark">🍡</span> Warung Jajan
+        <% end %>
+
+        <% if notice.present? %>
+          <p class="flash flash--notice"><%= notice %></p>
+        <% end %>
+        <% if alert.present? %>
+          <p class="flash flash--alert"><%= alert %></p>
+        <% end %>
+
+        <%= yield %>
+      </div>
+    </main>
+  </body>
+</html>

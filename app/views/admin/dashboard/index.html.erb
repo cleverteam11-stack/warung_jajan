@@ -2,18 +2,14 @@
 
 <h1>Dashboard</h1>
 
-<div class="product-grid" style="grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); margin-bottom: 2rem;">
-  <div class="product-card">
-    <div class="product-card__body">
-      <span class="product-card__stock">Pesanan Menunggu</span>
-      <span class="product-card__name" style="font-size: 1.5rem;"><%= @pending_orders_count %></span>
-    </div>
+<div class="stat-grid">
+  <div class="stat-card">
+    <span class="stat-card__label">Pesanan Menunggu</span>
+    <span class="stat-card__value"><%= @pending_orders_count %></span>
   </div>
-  <div class="product-card">
-    <div class="product-card__body">
-      <span class="product-card__stock">Produk Aktif</span>
-      <span class="product-card__name" style="font-size: 1.5rem;"><%= @products_count %></span>
-    </div>
+  <div class="stat-card">
+    <span class="stat-card__label">Produk Aktif</span>
+    <span class="stat-card__value"><%= @products_count %></span>
   </div>
 </div>
 

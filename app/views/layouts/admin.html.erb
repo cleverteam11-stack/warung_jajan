@@ -8,19 +8,25 @@
 
     <link rel="icon" href="/icon.png" type="image/png">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
   </head>
 
   <body>
     <header class="site-header site-header--admin">
       <div class="container site-header__bar">
-        <%= link_to "Warung Jajan Admin", admin_root_path, class: "site-header__brand" %>
+        <%= link_to admin_root_path, class: "site-header__brand" do %>
+          <span class="site-header__brand-mark">🍡</span> Warung Jajan Admin
+        <% end %>
         <nav class="site-header__nav">
           <%= link_to "Dashboard", admin_root_path %>
           <%= link_to "Produk", admin_products_path %>
           <%= link_to "Kategori", admin_categories_path %>
           <%= link_to "Pesanan", admin_orders_path %>
-          <%= button_to "Keluar", session_path, method: :delete %>
+          <%= button_to "Keluar", session_path, method: :delete, class: "btn btn-secondary btn-small" %>
         </nav>
       </div>
     </header>
