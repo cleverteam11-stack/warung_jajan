@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fbeee0"/>
+      <stop offset="100%" stop-color="#f6ddc4"/>
+    </linearGradient>
+    <radialGradient id="bowl" cx="50%" cy="35%" r="70%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#e7d9c8"/>
+    </radialGradient>
+    <linearGradient id="banana" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f0b64a"/>
+      <stop offset="100%" stop-color="#c47c1f"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="400" fill="url(#bg2)"/>
+  <ellipse cx="200" cy="330" rx="120" ry="18" fill="#c1440e" opacity="0.12"/>
+
+  <path d="M90 220 Q90 300 200 305 Q310 300 310 220 Z" fill="url(#bowl)"/>
+  <ellipse cx="200" cy="220" rx="110" ry="26" fill="#f3e5d5" stroke="#e7d9c8" stroke-width="3"/>
+
+  <!-- fried banana pieces: elongated golden capsules -->
+  <g fill="url(#banana)" stroke="#a5661a" stroke-width="2.5">
+    <path d="M145 220 C142 202 154 190 172 190 C190 190 200 202 198 218
+             C196 232 184 240 168 238 C152 236 148 234 145 220 Z"
+          transform="rotate(-18 172 214)"/>
+    <path d="M185 210 C182 190 196 176 216 176 C236 176 248 190 246 208
+             C244 224 230 234 212 232 C194 230 188 226 185 210 Z"
+          transform="rotate(-6 216 204)"/>
+    <path d="M225 222 C222 204 236 192 254 192 C270 192 280 204 278 218
+             C276 230 264 238 250 236 C236 234 228 234 225 222 Z"
+          transform="rotate(14 252 214)"/>
+    <path d="M165 236 C163 222 174 212 188 212 C202 212 212 222 210 234
+             C208 244 198 250 186 248 C174 246 167 246 165 236 Z"
+          transform="rotate(-10 187 230)"/>
+  </g>
+
+  <g fill="#8a5218" opacity="0.5">
+    <ellipse cx="172" cy="212" rx="4" ry="2" transform="rotate(-18 172 212)"/>
+    <ellipse cx="216" cy="200" rx="4" ry="2" transform="rotate(-6 216 200)"/>
+    <ellipse cx="252" cy="210" rx="4" ry="2" transform="rotate(14 252 210)"/>
+  </g>
+</svg>

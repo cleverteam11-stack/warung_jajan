@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fbeee0"/>
+      <stop offset="100%" stop-color="#f6ddc4"/>
+    </linearGradient>
+    <radialGradient id="bowl" cx="50%" cy="35%" r="70%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#e7d9c8"/>
+    </radialGradient>
+    <linearGradient id="chip2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#c96a3a"/>
+      <stop offset="100%" stop-color="#8f3e1c"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="400" fill="url(#bg2)"/>
+  <ellipse cx="200" cy="330" rx="120" ry="18" fill="#c1440e" opacity="0.12"/>
+
+  <path d="M90 220 Q90 300 200 305 Q310 300 310 220 Z" fill="url(#bowl)"/>
+  <ellipse cx="200" cy="220" rx="110" ry="26" fill="#f3e5d5" stroke="#e7d9c8" stroke-width="3"/>
+
+  <!-- crinkled fried meatball chips -->
+  <g stroke="#6e2a10" stroke-width="2.5" stroke-linejoin="round">
+    <path d="M150 214 C146 206 152 198 160 198 C166 194 174 198 174 206
+             C180 208 180 218 172 220 C174 228 166 232 158 228
+             C150 230 144 222 150 214 Z" fill="url(#chip2)"/>
+    <path d="M198 200 C194 190 202 180 212 180 C220 176 230 182 230 192
+             C238 194 238 206 228 208 C230 218 220 222 210 218
+             C200 220 192 210 198 200 Z" fill="url(#chip2)"/>
+    <path d="M242 216 C238 208 246 200 254 200 C260 196 268 200 268 208
+             C274 210 274 220 266 222 C268 230 260 234 252 230
+             C244 232 238 224 242 216 Z" fill="url(#chip2)"/>
+    <path d="M178 232 C174 224 182 216 190 216 C196 212 204 216 204 224
+             C210 226 210 236 202 238 C204 246 196 250 188 246
+             C180 248 174 240 178 232 Z" fill="url(#chip2)"/>
+  </g>
+
+  <!-- chili flakes -->
+  <g fill="#e2431f">
+    <circle cx="165" cy="210" r="2"/>
+    <circle cx="215" cy="196" r="2"/>
+    <circle cx="256" cy="212" r="2"/>
+    <circle cx="192" cy="228" r="2"/>
+    <circle cx="230" cy="206" r="1.6"/>
+    <circle cx="178" cy="216" r="1.6"/>
+  </g>
+</svg>

@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fbeee0"/>
+      <stop offset="100%" stop-color="#f6ddc4"/>
+    </linearGradient>
+    <linearGradient id="syrup" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b5651d"/>
+      <stop offset="100%" stop-color="#7a3f0f"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.5"/>
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.35"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="400" fill="url(#bg)"/>
+  <ellipse cx="200" cy="345" rx="95" ry="16" fill="#c1440e" opacity="0.12"/>
+
+  <path d="M130 130 L145 330 Q200 350 255 330 L270 130 Z" fill="url(#syrup)"/>
+
+  <!-- coconut milk (santan) top layer -->
+  <path d="M136 155 Q200 190 264 155 L270 130 L130 130 Z" fill="#faf6ec"/>
+  <path d="M138 168 Q200 198 262 168 L264 155 Q200 190 136 155 Z" fill="#faf6ec" opacity="0.85"/>
+
+  <!-- cendol worms -->
+  <g stroke="#3f8f4f" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.9">
+    <path d="M155 250 q6 -14 0 -28 q-6 -14 0 -28"/>
+    <path d="M180 265 q6 -14 0 -28 q-6 -14 0 -28"/>
+    <path d="M205 255 q6 -14 0 -28 q-6 -14 0 -28"/>
+    <path d="M230 270 q6 -14 0 -28 q-6 -14 0 -28"/>
+    <path d="M170 290 q6 -14 0 -28 q-6 -14 0 -28"/>
+  </g>
+
+  <path d="M130 130 L145 330 Q200 350 255 330 L270 130 Z" fill="url(#glass)"/>
+  <path d="M130 130 L270 130 L262 165 L138 165 Z" fill="#c1440e" opacity="0.1"/>
+
+  <g fill="#ffffff" opacity="0.7" stroke="#e7d9c8" stroke-width="2">
+    <rect x="160" y="185" width="26" height="26" rx="5" transform="rotate(-8 173 198)"/>
+    <rect x="215" y="195" width="24" height="24" rx="5" transform="rotate(10 227 207)"/>
+  </g>
+
+  <rect x="228" y="60" width="16" height="230" rx="8" fill="#e8a33f" transform="rotate(8 236 175)"/>
+  <rect x="228" y="60" width="16" height="230" rx="8" fill="#ffffff" opacity="0.25" transform="rotate(8 236 175)"/>
+</svg>
