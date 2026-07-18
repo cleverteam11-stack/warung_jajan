@@ -1,0 +1,35 @@
+<% content_for :title, "Keranjang - Warung Jajan" %>
+
+<h1>Keranjang Belanja</h1>
+
+<% if current_cart.empty? %>
+  <p class="empty-state">
+    Keranjang masih kosong.<br>
+    <%= link_to "Mulai belanja", products_path, class: "btn", style: "margin-top: 1rem;" %>
+  </p>
+<% else %>
+  <% current_cart.items.each do |item| %>
+    <div class="cart-line">
+      <div>
+        <div class="cart-line__name"><%= item.product.name %></div>
+        <div><%= number_to_currency(item.product.price_cents, unit: "Rp ", precision: 0, delimiter: ".") %> / pcs</div>
+      </div>
+
+      <div class="cart-line__controls">
+        <%= form_with url: cart_item_path(item.product.id), method: :patch do %>
+          <input type="number" name="quantity" value="<%= item.quantity %>" min="1" max="<%= item.product.stock %>" onchange="this.form.requestSubmit()">
+        <% end %>
+        <%= button_to "Hapus", cart_item_path(item.product.id), method: :delete, class: "btn btn-secondary btn-small" %>
+      </div>
+
+      <div><%= number_to_currency(item.subtotal_cents, unit: "Rp ", precision: 0, delimiter: ".") %></div>
+    </div>
+  <% end %>
+
+  <div class="cart-total">
+    <span>Total</span>
+    <span><%= number_to_currency(current_cart.total_cents, unit: "Rp ", precision: 0, delimiter: ".") %></span>
+  </div>
+
+  <%= link_to "Lanjut ke Checkout", new_order_path, class: "btn" %>
+<% end %>

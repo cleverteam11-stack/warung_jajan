@@ -1,0 +1,43 @@
+<% content_for :title, "Pesanan #{@order.number} - Warung Jajan" %>
+
+<h1>Terima kasih, pesanan diterima!</h1>
+
+<p>Nomor pesanan: <strong><%= @order.number %></strong></p>
+<p>Status: <span class="badge badge--<%= @order.status %>"><%= @order.status.capitalize %></span></p>
+
+<% if @order.payment_method == "transfer" %>
+  <p>Silakan transfer sejumlah <strong><%= number_to_currency(@order.total_cents, unit: "Rp ", precision: 0, delimiter: ".") %></strong> lalu tunggu konfirmasi dari admin warung.</p>
+<% else %>
+  <p>Pesanan akan dibayar di tempat (COD) senilai <strong><%= number_to_currency(@order.total_cents, unit: "Rp ", precision: 0, delimiter: ".") %></strong>.</p>
+<% end %>
+
+<h2>Detail Pesanan</h2>
+<table class="data-table">
+  <thead>
+    <tr>
+      <th>Produk</th>
+      <th>Jumlah</th>
+      <th>Harga</th>
+      <th>Subtotal</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @order.order_items.each do |item| %>
+      <tr>
+        <td><%= item.product_name %></td>
+        <td><%= item.quantity %></td>
+        <td><%= number_to_currency(item.unit_price_cents, unit: "Rp ", precision: 0, delimiter: ".") %></td>
+        <td><%= number_to_currency(item.subtotal_cents, unit: "Rp ", precision: 0, delimiter: ".") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h2>Dikirim ke</h2>
+<p>
+  <%= @order.customer_name %><br>
+  <%= @order.customer_phone %><br>
+  <%= simple_format(@order.customer_address) %>
+</p>
+
+<%= link_to "Kembali ke katalog", products_path, class: "btn" %>

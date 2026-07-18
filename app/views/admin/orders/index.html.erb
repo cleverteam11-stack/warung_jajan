@@ -1,0 +1,32 @@
+<% content_for :title, "Pesanan - Admin" %>
+
+<h1>Pesanan</h1>
+
+<% if @orders.any? %>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Nomor</th>
+        <th>Pelanggan</th>
+        <th>Total</th>
+        <th>Pembayaran</th>
+        <th>Status</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @orders.each do |order| %>
+        <tr>
+          <td><%= order.number %></td>
+          <td><%= order.customer_name %></td>
+          <td><%= number_to_currency(order.total_cents, unit: "Rp ", precision: 0, delimiter: ".") %></td>
+          <td><%= order.payment_method == "transfer" ? "Transfer" : "COD" %></td>
+          <td><span class="badge badge--<%= order.status %>"><%= order.status.capitalize %></span></td>
+          <td><%= link_to "Lihat", admin_order_path(order) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p class="empty-state">Belum ada pesanan.</p>
+<% end %>

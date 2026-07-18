@@ -1,0 +1,39 @@
+<% content_for :title, "Produk - Admin" %>
+
+<div class="actions-bar">
+  <h1>Produk</h1>
+  <%= link_to "Tambah Produk", new_admin_product_path, class: "btn" %>
+</div>
+
+<% if @products.any? %>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Nama</th>
+        <th>Kategori</th>
+        <th>Harga</th>
+        <th>Stok</th>
+        <th>Status</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @products.each do |product| %>
+        <tr>
+          <td><%= link_to product.name, admin_product_path(product) %></td>
+          <td><%= product.category&.name || "-" %></td>
+          <td><%= number_to_currency(product.price_cents, unit: "Rp ", precision: 0, delimiter: ".") %></td>
+          <td><%= product.stock %></td>
+          <td><%= product.status %></td>
+          <td>
+            <%= link_to "Ubah", edit_admin_product_path(product), class: "btn btn-secondary btn-small" %>
+            <%= button_to "Hapus", admin_product_path(product), method: :delete, class: "btn btn-danger btn-small",
+                  form: { data: { turbo_confirm: "Yakin hapus produk ini?" } } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p class="empty-state">Belum ada produk. <%= link_to "Tambah produk pertama", new_admin_product_path %>.</p>
+<% end %>

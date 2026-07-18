@@ -1,0 +1,38 @@
+<% content_for :title, "Warung Jajan" %>
+
+<h1>Jajanan Kami</h1>
+
+<div class="category-filter">
+  <%= link_to "Semua", products_path, class: params[:category_id].blank? ? "active" : nil %>
+  <% @categories.each do |category| %>
+    <%= link_to category.name, products_path(category_id: category.id),
+          class: params[:category_id].to_s == category.id.to_s ? "active" : nil %>
+  <% end %>
+</div>
+
+<% if @products.any? %>
+  <div class="product-grid">
+    <% @products.each do |product| %>
+      <div class="product-card">
+        <%= link_to product_path(product.slug) do %>
+          <div class="product-card__photo">
+            <% if product.photo.attached? %>
+              <%= image_tag product.photo %>
+            <% else %>
+              <span class="product-card__photo--placeholder">Tidak ada foto</span>
+            <% end %>
+          </div>
+        <% end %>
+        <div class="product-card__body">
+          <%= link_to product.name, product_path(product.slug), class: "product-card__name" %>
+          <span class="product-card__price"><%= number_to_currency(product.price_cents, unit: "Rp ", precision: 0, delimiter: ".") %></span>
+          <span class="product-card__stock">
+            <%= product.stock.positive? ? "Stok: #{product.stock}" : "Habis" %>
+          </span>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <p class="empty-state">Belum ada produk di kategori ini.</p>
+<% end %>

@@ -1,0 +1,14 @@
+<% if category.errors.any? %>
+  <div class="form-errors">
+    <%= category.errors.full_messages.to_sentence %>
+  </div>
+<% end %>
+
+<%= form_with model: [ :admin, category ] do |form| %>
+  <div class="field">
+    <%= form.label :name, "Nama Kategori" %>
+    <%= form.text_field :name, required: true %>
+  </div>
+
+  <%= form.submit "Simpan", class: "btn" %>
+<% end %>

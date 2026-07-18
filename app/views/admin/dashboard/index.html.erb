@@ -1,0 +1,46 @@
+<% content_for :title, "Dashboard - Admin" %>
+
+<h1>Dashboard</h1>
+
+<div class="product-grid" style="grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); margin-bottom: 2rem;">
+  <div class="product-card">
+    <div class="product-card__body">
+      <span class="product-card__stock">Pesanan Menunggu</span>
+      <span class="product-card__name" style="font-size: 1.5rem;"><%= @pending_orders_count %></span>
+    </div>
+  </div>
+  <div class="product-card">
+    <div class="product-card__body">
+      <span class="product-card__stock">Produk Aktif</span>
+      <span class="product-card__name" style="font-size: 1.5rem;"><%= @products_count %></span>
+    </div>
+  </div>
+</div>
+
+<h2>Pesanan Terbaru</h2>
+<% if @recent_orders.any? %>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Nomor</th>
+        <th>Pelanggan</th>
+        <th>Total</th>
+        <th>Status</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @recent_orders.each do |order| %>
+        <tr>
+          <td><%= order.number %></td>
+          <td><%= order.customer_name %></td>
+          <td><%= number_to_currency(order.total_cents, unit: "Rp ", precision: 0, delimiter: ".") %></td>
+          <td><span class="badge badge--<%= order.status %>"><%= order.status.capitalize %></span></td>
+          <td><%= link_to "Lihat", admin_order_path(order) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p class="empty-state">Belum ada pesanan.</p>
+<% end %>

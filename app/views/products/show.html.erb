@@ -1,0 +1,31 @@
+<% content_for :title, "#{@product.name} - Warung Jajan" %>
+
+<p><%= link_to "&larr; Kembali ke katalog".html_safe, products_path %></p>
+
+<div class="product-card__photo" style="max-width: 320px; border-radius: 10px; margin-bottom: 1rem;">
+  <% if @product.photo.attached? %>
+    <%= image_tag @product.photo %>
+  <% else %>
+    <span class="product-card__photo--placeholder">Tidak ada foto</span>
+  <% end %>
+</div>
+
+<h1><%= @product.name %></h1>
+<p class="product-card__price"><%= number_to_currency(@product.price_cents, unit: "Rp ", precision: 0, delimiter: ".") %></p>
+<p><%= @product.stock.positive? ? "Stok tersedia: #{@product.stock}" : "Stok habis" %></p>
+
+<% if @product.description.present? %>
+  <p><%= @product.description %></p>
+<% end %>
+
+<% if @product.available? %>
+  <%= form_with url: cart_items_path(product_id: @product.id), method: :post do %>
+    <div class="field" style="max-width: 120px;">
+      <label for="quantity">Jumlah</label>
+      <input type="number" name="quantity" id="quantity" value="1" min="1" max="<%= @product.stock %>">
+    </div>
+    <%= submit_tag "Tambah ke Keranjang", class: "btn" %>
+  <% end %>
+<% else %>
+  <p><em>Produk ini sedang tidak tersedia.</em></p>
+<% end %>

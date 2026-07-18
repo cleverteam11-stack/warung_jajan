@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for(:title) || "Admin - Warung Jajan" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <link rel="icon" href="/icon.png" type="image/png">
+
+    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+  </head>
+
+  <body>
+    <header class="site-header site-header--admin">
+      <div class="container site-header__bar">
+        <%= link_to "Warung Jajan Admin", admin_root_path, class: "site-header__brand" %>
+        <nav class="site-header__nav">
+          <%= link_to "Dashboard", admin_root_path %>
+          <%= link_to "Produk", admin_products_path %>
+          <%= link_to "Kategori", admin_categories_path %>
+          <%= link_to "Pesanan", admin_orders_path %>
+          <%= button_to "Keluar", session_path, method: :delete %>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <% if notice.present? %>
+        <p class="flash flash--notice"><%= notice %></p>
+      <% end %>
+      <% if alert.present? %>
+        <p class="flash flash--alert"><%= alert %></p>
+      <% end %>
+
+      <%= yield %>
+    </main>
+  </body>
+</html>

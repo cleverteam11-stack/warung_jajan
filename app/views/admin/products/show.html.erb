@@ -1,0 +1,22 @@
+<% content_for :title, "#{@product.name} - Admin" %>
+
+<div class="actions-bar">
+  <h1><%= @product.name %></h1>
+  <%= link_to "Ubah", edit_admin_product_path(@product), class: "btn" %>
+</div>
+
+<% if @product.photo.attached? %>
+  <div class="product-card__photo" style="max-width: 240px; margin-bottom: 1rem;">
+    <%= image_tag @product.photo %>
+  </div>
+<% end %>
+
+<p>Kategori: <%= @product.category&.name || "-" %></p>
+<p>Harga: <%= number_to_currency(@product.price_cents, unit: "Rp ", precision: 0, delimiter: ".") %></p>
+<p>Stok: <%= @product.stock %></p>
+<p>Status: <%= @product.status %></p>
+<% if @product.description.present? %>
+  <p><%= @product.description %></p>
+<% end %>
+
+<p><%= link_to "&larr; Kembali ke daftar produk".html_safe, admin_products_path %></p>

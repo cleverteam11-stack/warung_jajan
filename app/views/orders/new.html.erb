@@ -1,0 +1,49 @@
+<% content_for :title, "Checkout - Warung Jajan" %>
+
+<h1>Checkout</h1>
+
+<h2>Ringkasan Pesanan</h2>
+<% current_cart.items.each do |item| %>
+  <div class="cart-line">
+    <div class="cart-line__name"><%= item.quantity %>x <%= item.product.name %></div>
+    <div><%= number_to_currency(item.subtotal_cents, unit: "Rp ", precision: 0, delimiter: ".") %></div>
+  </div>
+<% end %>
+<div class="cart-total">
+  <span>Total</span>
+  <span><%= number_to_currency(current_cart.total_cents, unit: "Rp ", precision: 0, delimiter: ".") %></span>
+</div>
+
+<h2>Data Pengiriman</h2>
+
+<% if @order.errors.any? %>
+  <div class="form-errors">
+    <%= @order.errors.full_messages.to_sentence %>
+  </div>
+<% end %>
+
+<%= form_with model: @order, url: orders_path do |form| %>
+  <div class="field">
+    <%= form.label :customer_name, "Nama Penerima" %>
+    <%= form.text_field :customer_name, required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :customer_phone, "Nomor HP" %>
+    <%= form.telephone_field :customer_phone, required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :customer_address, "Alamat Pengiriman" %>
+    <%= form.text_area :customer_address, rows: 3, required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :payment_method, "Metode Pembayaran" %>
+    <%= form.select :payment_method,
+          [ [ "Transfer Bank", "transfer" ], [ "Bayar di Tempat (COD)", "cod" ] ],
+          { include_blank: "Pilih metode pembayaran" }, { required: true } %>
+  </div>
+
+  <%= form.submit "Buat Pesanan", class: "btn" %>
+<% end %>

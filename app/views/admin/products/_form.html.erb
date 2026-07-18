@@ -1,0 +1,49 @@
+<% if product.errors.any? %>
+  <div class="form-errors">
+    <%= product.errors.full_messages.to_sentence %>
+  </div>
+<% end %>
+
+<%= form_with model: [ :admin, product ] do |form| %>
+  <div class="field">
+    <%= form.label :name, "Nama Produk" %>
+    <%= form.text_field :name, required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :category_id, "Kategori" %>
+    <%= form.collection_select :category_id, Category.order(:name), :id, :name, include_blank: "Tanpa kategori" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description, "Deskripsi" %>
+    <%= form.text_area :description, rows: 3 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price_cents, "Harga (Rp)" %>
+    <%= form.number_field :price_cents, required: true, min: 1 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :stock, "Stok" %>
+    <%= form.number_field :stock, required: true, min: 0 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status, "Status" %>
+    <%= form.select :status, [ [ "Aktif", "active" ], [ "Discontinued", "discontinued" ] ] %>
+  </div>
+
+  <div class="field">
+    <%= form.label :photo, "Foto Produk" %>
+    <%= form.file_field :photo, accept: "image/*" %>
+    <% if product.photo.attached? %>
+      <div class="product-card__photo" style="max-width: 160px;">
+        <%= image_tag product.photo %>
+      </div>
+    <% end %>
+  </div>
+
+  <%= form.submit "Simpan", class: "btn" %>
+<% end %>

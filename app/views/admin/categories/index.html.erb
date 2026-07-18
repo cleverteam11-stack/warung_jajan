@@ -1,0 +1,33 @@
+<% content_for :title, "Kategori - Admin" %>
+
+<div class="actions-bar">
+  <h1>Kategori</h1>
+  <%= link_to "Tambah Kategori", new_admin_category_path, class: "btn" %>
+</div>
+
+<% if @categories.any? %>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Nama</th>
+        <th>Jumlah Produk</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @categories.each do |category| %>
+        <tr>
+          <td><%= category.name %></td>
+          <td><%= category.products.count %></td>
+          <td>
+            <%= link_to "Ubah", edit_admin_category_path(category), class: "btn btn-secondary btn-small" %>
+            <%= button_to "Hapus", admin_category_path(category), method: :delete, class: "btn btn-danger btn-small",
+                  form: { data: { turbo_confirm: "Yakin hapus kategori ini? Produk di kategori ini akan jadi tanpa kategori." } } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p class="empty-state">Belum ada kategori. <%= link_to "Tambah kategori pertama", new_admin_category_path %>.</p>
+<% end %>

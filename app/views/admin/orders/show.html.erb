@@ -1,0 +1,50 @@
+<% content_for :title, "Pesanan #{@order.number} - Admin" %>
+
+<p><%= link_to "&larr; Kembali ke daftar pesanan".html_safe, admin_orders_path %></p>
+
+<div class="actions-bar">
+  <h1>Pesanan <%= @order.number %></h1>
+  <span class="badge badge--<%= @order.status %>"><%= @order.status.capitalize %></span>
+</div>
+
+<%= form_with model: @order, url: admin_order_path(@order), method: :patch do |form| %>
+  <div class="field" style="max-width: 260px;">
+    <%= form.label :status, "Ubah Status" %>
+    <%= form.select :status, Order::STATUSES.map { |s| [ s.capitalize, s ] } %>
+  </div>
+  <%= form.submit "Perbarui Status", class: "btn" %>
+<% end %>
+
+<h2>Detail Pesanan</h2>
+<table class="data-table">
+  <thead>
+    <tr>
+      <th>Produk</th>
+      <th>Jumlah</th>
+      <th>Harga</th>
+      <th>Subtotal</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @order.order_items.each do |item| %>
+      <tr>
+        <td><%= item.product_name %></td>
+        <td><%= item.quantity %></td>
+        <td><%= number_to_currency(item.unit_price_cents, unit: "Rp ", precision: 0, delimiter: ".") %></td>
+        <td><%= number_to_currency(item.subtotal_cents, unit: "Rp ", precision: 0, delimiter: ".") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<p class="cart-total">
+  <span>Total</span>
+  <span><%= number_to_currency(@order.total_cents, unit: "Rp ", precision: 0, delimiter: ".") %></span>
+</p>
+
+<h2>Pembeli</h2>
+<p>
+  <%= @order.customer_name %><br>
+  <%= @order.customer_phone %><br>
+  <%= simple_format(@order.customer_address) %>
+</p>
+<p>Metode pembayaran: <%= @order.payment_method == "transfer" ? "Transfer Bank" : "Bayar di Tempat (COD)" %></p>
